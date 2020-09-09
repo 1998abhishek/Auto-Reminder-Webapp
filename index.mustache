@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width-device-width" , initial-scale=1.0>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>todos</title>
+</head>
+<style>
+      h1 {text-align: center;}
+       p {text-align: center;}
+       div {text-align: center;}
+         #otis li{
+          list-style-type: none;
+        }
+     #otis1 li{
+         list-style-type: none;
+          }
+          label {
+               display: inline-block;
+               width: 630px;
+               height: -30px;
+               text-align: left;
+             }​
+
+</style>
+<body>
+
+   <h1>Abhishek your Reminder Section is here !!</h1>
+  <center> <form action="/todos" method="post">
+      <label for="fname"><b>Name of the Task</b></label><br>
+       <input type="text" id="fname" name="TaskName"><br>
+        <label for="fname1"><b>What is the task for?</b></label><br>
+       <input type="text" id="fname1" name="TaskDescription"><br>
+        <label for="fname2"><b>Creator's Name</b></label><br>
+       <input type="text" id="fname2" name="Creator"><br>
+        <label for="fname3"><b>Duration for reminder(Minutes)</b></label><br>
+       <input type="number" id="fname3" name="Duration"><br>
+        <label for="creationdate"><b>Date and time of creation</b></label><br>
+       <input type="datetime-local" id="creationdate" name="CreatedAt"><br>
+       <p></p>
+       <button id="button1" height=30px type="submit"><b>Create reminder</b></button>
+   </form></center>
+   <br>
+   <center><h2>Active Reminder's</h2>
+   <center><h3>|&nbsp Task &nbsp    | &nbsp   Creator  &nbsp  | &nbsp   Duration(in mins) &nbsp  | &nbsp   Creation date  &nbsp  | &nbsp  Description  &nbsp  |</h3></center>
+   <ol id="otis1">
+      {{#todos}}
+          <li>
+          <form action="/todos/{{_id}}/completed" method="post">
+               {{nametask}}
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               {{namecreator}}
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               {{duration}}
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               {{createdate}}
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                {{description}} &nbsp&nbsp&nbsp <button type="submit">Done</button>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          </form>
+          </li>
+       {{/todos}}
+    </ol></center>
+     <br>
+    <center><h2>Expired Reminder's</h2>
+    <center><h3>|&nbsp Task &nbsp    | &nbsp   Creator  &nbsp  | &nbsp   Duration(in mins) &nbsp  | &nbsp   Creation date  &nbsp  | &nbsp  Description  &nbsp  |</h3></center>
+    <ol id="otis">
+         {{#doneTodos}}
+             <li>
+              <form action="/todos/{{_id}}/completed" method="post">
+                   {{nametask}}
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   {{namecreator}}
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   {{duration}}
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   {{createdate}}
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                   {{description}} &nbsp&nbsp&nbsp <button type="submit">Undo</button>
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              </form>
+             </li>
+         {{/doneTodos}}
+    </ol></center>
+
+</body>
+</html>
